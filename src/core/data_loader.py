@@ -21,7 +21,7 @@ class DataLoader:
     SUPPORTED_VIDEO_FORMATS = ['.mp4', '.avi', '.mov', '.mkv', '.flv']
     SUPPORTED_IMAGE_FORMATS = ['.jpg', '.jpeg', '.png', '.tif', '.tiff', '.bmp']
     
-    def __init__(self, source: Union[str, Path], 
+    def __init__(self, source: str | Path, 
                  max_frames: Optional[int] = None,
                  start_frame: int = 0,
                  grayscale: bool = False,
