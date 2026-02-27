@@ -1,0 +1,75 @@
+# Configuration for cell/particle tracking
+
+# Data loading
+data:
+  max_frames: 100  # Limit frames for testing (null = all)
+  start_frame: 0
+  grayscale: true
+  resize: null  # [width, height] or null
+
+# Preprocessing
+preprocessing:
+  enabled: true
+  denoise:
+    method: gaussian
+    kernel_size: 3
+  enhance_contrast:
+    method: clahe
+    clip_limit: 2.0
+  normalize: true
+
+# Detection
+detector:
+  type: blob  # 'blob', 'blob_advanced', 'yolo', 'motion'
+  config:
+    min_area: 50
+    max_area: 2000
+    min_circularity: 0.5
+    threshold_method: otsu
+    invert: false
+    morphology: true
+
+# Tracking
+tracker:
+  type: trackpy  # 'simple', 'trackpy', 'sort'
+  config:
+    search_range: 15
+    memory: 3
+    adaptive_stop: null
+
+# Analysis
+analysis:
+  motion:
+    enabled: true
+    config:
+      fps: 30
+      pixel_size: 0.16  # microns per pixel
+      smooth_window: null
+  
+  trajectory:
+    enabled: true
+    config:
+      pixel_size: 0.16
+  
+  behavior:
+    enabled: false
+    config:
+      method: unsupervised
+      n_clusters: 3
+
+# Visualization
+visualization:
+  video:
+    enabled: true
+    config:
+      show_bbox: true
+      show_id: true
+      show_trajectory: true
+      trail_length: 30
+      fps: 30
+  
+  plots:
+    enabled: true
+    config:
+      figsize: [10, 8]
+      dpi: 100

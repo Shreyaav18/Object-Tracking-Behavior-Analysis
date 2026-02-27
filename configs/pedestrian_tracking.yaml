@@ -1,0 +1,40 @@
+# Configuration for pedestrian tracking
+
+data:
+  max_frames: null
+  grayscale: false
+  resize: null
+
+preprocessing:
+  enabled: false
+
+detector:
+  type: yolo
+  config:
+    model: yolov8n.pt
+    conf_threshold: 0.5
+    classes: [0]  # 0 = person
+
+tracker:
+  type: sort
+  config:
+    max_age: 30
+    min_hits: 3
+    iou_threshold: 0.3
+
+analysis:
+  motion:
+    enabled: true
+    config:
+      fps: 30
+      pixel_size: 1.0
+
+visualization:
+  video:
+    enabled: true
+    config:
+      show_bbox: true
+      show_id: true
+      show_trajectory: true
+      trail_length: 50
+      fps: 30
