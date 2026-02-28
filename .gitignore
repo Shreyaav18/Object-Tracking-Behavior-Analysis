@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Output artifacts
+outputs/
+*.mp4
+*.png
+*.csv
+*.json
+
+# OS files
+.DS_Store
+Thumbs.db
